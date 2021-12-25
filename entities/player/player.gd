@@ -10,7 +10,7 @@ var is_dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	add_to_group("player")
 
 
 func get_control_vectors():
@@ -31,11 +31,14 @@ func _process(delta):
 	
 	
 		if Input.is_action_just_pressed("ded"):
-			is_dead = true
-			velocity.x = 0.0
-			emit_signal("ded")
+			kill()
 
 	if not(is_on_floor()):
 		velocity.y += 9.8
 	
 	velocity = move_and_slide(velocity)
+
+func kill():
+	is_dead = true
+	velocity.x = 0.0
+	emit_signal("ded")
