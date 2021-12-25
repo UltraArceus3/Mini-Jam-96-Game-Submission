@@ -40,5 +40,6 @@ func _process(delta):
 
 func kill():
 	is_dead = true
-	velocity.x = 0.0
+	velocity = Vector2.ZERO
 	emit_signal("ded")
+	$Particles2D.emitting = true
