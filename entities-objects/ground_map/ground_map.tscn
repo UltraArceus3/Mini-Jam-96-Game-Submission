@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://resources/ground_map.tres" type="TileSet" id=1]
+[ext_resource path="res://entities-objects/ground_map/ground_map.gd" type="Script" id=2]
+[ext_resource path="res://entities-objects/ground_map/3d_TS.gd" type="Script" id=3]
+
+[node name="ground_map" type="TileMap"]
+modulate = Color( 0.705882, 0.298039, 0.588235, 1 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+script = ExtResource( 2 )
+
+[node name="3D_Canvas" type="Node2D" parent="."]
+
+[node name="Back" type="CanvasLayer" parent="3D_Canvas"]
+layer = -1
+follow_viewport_enable = true
+follow_viewport_scale = 0.92
+
+[node name="3d_ts" type="TileMap" parent="3D_Canvas/Back"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 2, 65536, 0, 65536, 65537, 0, 65538, 131072, 0, 65536, 131073, 0, 65538, 196608, 0, 131072, 196609, 0, 131074 )
+script = ExtResource( 3 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="3D_Canvas/Back"]
+color = Color( 0.639216, 0.639216, 0.639216, 1 )
+
+[node name="2" type="CanvasLayer" parent="3D_Canvas"]
+layer = -1
+follow_viewport_enable = true
+follow_viewport_scale = 0.94
+
+[node name="3d_ts" type="TileMap" parent="3D_Canvas/2"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 2, 65536, 0, 65536, 65537, 0, 65538, 131072, 0, 65536, 131073, 0, 65538, 196608, 0, 131072, 196609, 0, 131074 )
+script = ExtResource( 3 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="3D_Canvas/2"]
+color = Color( 0.639216, 0.639216, 0.639216, 1 )
+
+[node name="1" type="CanvasLayer" parent="3D_Canvas"]
+layer = -1
+follow_viewport_enable = true
+follow_viewport_scale = 0.96
+
+[node name="3d_ts" type="TileMap" parent="3D_Canvas/1"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 2, 65536, 0, 65536, 65537, 0, 65538, 131072, 0, 65536, 131073, 0, 65538, 196608, 0, 131072, 196609, 0, 131074 )
+script = ExtResource( 3 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="3D_Canvas/1"]
+color = Color( 0.639216, 0.639216, 0.639216, 1 )
+
+[node name="Front" type="CanvasLayer" parent="3D_Canvas"]
+layer = -1
+follow_viewport_enable = true
+follow_viewport_scale = 0.98
+
+[node name="3d_ts" type="TileMap" parent="3D_Canvas/Front"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 2, 65536, 0, 65536, 65537, 0, 65538, 131072, 0, 65536, 131073, 0, 65538, 196608, 0, 131072, 196609, 0, 131074 )
+script = ExtResource( 3 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="3D_Canvas/Front"]
+color = Color( 0.639216, 0.639216, 0.639216, 1 )

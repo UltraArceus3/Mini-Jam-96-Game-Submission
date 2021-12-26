@@ -14,6 +14,7 @@ func _ready():
 func _spawn_player():
 	var i = player_inst.instance()
 	#yield(get_tree().create_timer(1), "timeout")
+	i.position = position
 	i.connect("ded", self, "_spawn_player")
 	emit_signal("respawn")
 	get_parent().call_deferred("add_child", i)
