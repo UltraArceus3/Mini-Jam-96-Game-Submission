@@ -14,6 +14,10 @@ config/name="MJ96 Game"
 run/main_scene="res://Scenes/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Scenes/Global/global.gd"
+
 [display]
 
 window/size/width=1280
