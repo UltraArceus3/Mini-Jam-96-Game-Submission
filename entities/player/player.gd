@@ -28,6 +28,9 @@ func _process(delta):
 		if velocity.y == 0.0:
 			velocity.y -= int(Input.is_action_just_pressed("UP")) * speed * 3
 	
+		$Sprite.scale.x = 4 * abs(velocity.x)/velocity.x if abs(velocity.x) > 0 else $Sprite.scale.x
+		#Lazy way to set sprite direction based on velocity :\
+		#x4 because the sprite's default scale is scale = Vector2(4, 4)
 	
 	
 		if Input.is_action_just_pressed("ded"):
@@ -39,7 +42,12 @@ func _process(delta):
 	velocity = move_and_slide(velocity)
 
 func kill():
+	if is_dead:
+		return
 	is_dead = true
 	velocity = Vector2.ZERO
+	$Sprite/ColorRect.visible = false
+	$Sprite/ColorRect2.visible = false
+	$Sprite.texture = load("res://resources/block.png")
 	emit_signal("ded")
 	$Particles2D.emitting = true

@@ -1,6 +1,8 @@
 extends Position2D
 
 
+signal respawn
+
 export var player_inst : PackedScene
 
 
@@ -13,4 +15,5 @@ func _spawn_player():
 	var i = player_inst.instance()
 	#yield(get_tree().create_timer(1), "timeout")
 	i.connect("ded", self, "_spawn_player")
+	emit_signal("respawn")
 	get_parent().call_deferred("add_child", i)
