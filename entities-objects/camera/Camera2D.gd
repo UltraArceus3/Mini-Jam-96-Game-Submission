@@ -1,9 +1,9 @@
 extends Camera2D
 
 
-onready var size = (get_viewport_rect().size * zoom)
+onready var size = get_viewport_rect().size * zoom
 
-export var shift = Vector2(50,250)
+export var shift : Vector2 = Vector2(50, zoom.y*1000) #330
 
 var player_path: NodePath
 

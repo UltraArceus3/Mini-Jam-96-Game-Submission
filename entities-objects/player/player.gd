@@ -8,9 +8,13 @@ export var speed := 100.0
 
 var is_dead = false
 
+var def_scale: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	def_scale = $Sprite.scale
 	add_to_group("player")
+	_gen_color()
 
 
 func get_control_vectors():
@@ -19,7 +23,7 @@ func get_control_vectors():
 	
 	
 
-func _process(delta):
+func _process(_delta):
 	
 	if not(is_dead):
 		velocity.x = get_control_vectors() * speed
@@ -28,7 +32,7 @@ func _process(delta):
 		if velocity.y == 0.0:
 			velocity.y -= int(Input.is_action_just_pressed("UP")) * speed * 3
 	
-		$Sprite.scale.x = 4 * abs(velocity.x)/velocity.x if abs(velocity.x) > 0 else $Sprite.scale.x
+		$Sprite.scale.x = def_scale.x * abs(velocity.x)/velocity.x if abs(velocity.x) > 0 else $Sprite.scale.x
 		#Lazy way to set sprite direction based on velocity :\
 		#x4 because the sprite's default scale is scale = Vector2(4, 4)
 	
@@ -51,3 +55,42 @@ func kill():
 	$Sprite.texture = load("res://resources/block.png")
 	emit_signal("ded")
 	$Particles2D.emitting = true
+
+
+func _gen_color():
+	randomize()
+	var ind = -1
+	var ind_b = -1
+	var num = randi() % 2
+	var r: float
+	var g: float
+	var b: float
+	
+	
+	for i in range(num):
+		ind_b = randi() % 3
+		
+		while ind_b == ind:
+			ind_b = randi() % 3
+		
+		ind = ind_b
+		
+		match ind:
+		
+			0:
+				r = randf()*0.5
+			1:
+				g = randf()*0.5
+			2:
+				b = randf()*0.5
+	
+	if r == 0.0:
+		r = randf()
+	if g == 0.0:
+		g = randf()
+	if b == 0.0:
+		b = randf()
+	
+	var col = Color(r,g,b)
+	
+	$Sprite.self_modulate = col
