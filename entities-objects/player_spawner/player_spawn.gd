@@ -9,12 +9,12 @@ export var player_inst : PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("respawn", Global, "_gen_color")
-	_spawn_player()
+	_spawn_player(0)
 
 
-func _spawn_player():
+func _spawn_player(wait_sec = 1):
 	var i = player_inst.instance()
-	#yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(wait_sec), "timeout")
 	i.position = position
 	i.connect("ded", self, "_spawn_player")
 	emit_signal("respawn")

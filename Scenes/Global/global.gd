@@ -9,6 +9,9 @@ var color : Color
 func _ready():
 	pass
 
+func _process(_delta):
+	if Input.is_action_just_pressed("f11"):
+		OS.window_fullscreen = !OS.window_fullscreen
 
 
 func _gen_color():

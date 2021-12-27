@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/plat-guy.png" type="Texture" id=1]
+[ext_resource path="res://resources/end_portal.png" type="Texture" id=2]
+[ext_resource path="res://resources/end_frame.png" type="Texture" id=3]
+[ext_resource path="res://entities-objects/goal_area/goal_area.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask_texture;
+
+void fragment(){
+	
+	float eq = sqrt(pow((UV.x),2.0) +1.0) + (TIME/1.0);
+	float eq2 = sin(UV.y);
+	float diff_x = 0.0;
+	float diff_y = 0.0;
+	if (mod(FRAGCOORD.y, 2.0) < 1.0) {
+
+		
+		diff_x += eq+eq2*5.0*sin(TIME);
+		diff_y -= 2.0*cos(UV.y*TIME);
+	}
+	else{
+		diff_x += pow(UV.x+ sin(TIME/300.0)*300.0,1.0) * pow(UV.y,2.0);
+		diff_y += pow(UV.x+ cos(TIME/300.0)*300.0,1.0);
+	}
+
+	
+	vec2 newuv = UV;
+	
+	COLOR = texture(TEXTURE, vec2(newuv.x + diff_x, newuv.y + diff_y)) / vec4(1.,1.,1.,1.);
+
+	if (COLOR.a != 0.0){
+		
+		if (mod(FRAGCOORD.y, 2.0) < 1.0) {
+			COLOR = vec4(0.855,0.246,0.988,1.);
+			COLOR.rgb *= abs(sin(0.5*TIME));
+		}
+		else{
+			COLOR = vec4(0.,.59,1.0,1.)
+		}
+	}
+	else{
+		COLOR = vec4(0.102,0.098,0.195,1.)
+	}
+	
+	COLOR.a *= texture(mask_texture, UV).a;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/mask_texture = ExtResource( 2 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 4.8
+
+[node name="goal_area" type="Area2D"]
+scale = Vector2( 5, 5 )
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndFrame" type="Sprite" parent="."]
+position = Vector2( 5.96046e-08, 8.34465e-07 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )

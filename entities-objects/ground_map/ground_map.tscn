@@ -21,6 +21,8 @@ follow_viewport_scale = 0.92
 [node name="3d_ts" type="TileMap" parent="3D_Canvas/Back"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
 format = 1
 script = ExtResource( 3 )
 
@@ -35,6 +37,8 @@ follow_viewport_scale = 0.94
 [node name="3d_ts" type="TileMap" parent="3D_Canvas/2"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
 format = 1
 script = ExtResource( 3 )
 
@@ -49,6 +53,8 @@ follow_viewport_scale = 0.96
 [node name="3d_ts" type="TileMap" parent="3D_Canvas/1"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
 format = 1
 script = ExtResource( 3 )
 
@@ -63,6 +69,8 @@ follow_viewport_scale = 0.98
 [node name="3d_ts" type="TileMap" parent="3D_Canvas/Front"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 0
+collision_mask = 0
 format = 1
 script = ExtResource( 3 )
 
