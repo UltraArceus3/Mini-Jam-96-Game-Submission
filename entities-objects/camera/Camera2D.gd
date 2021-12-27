@@ -1,7 +1,10 @@
 extends Camera2D
 
 
-onready var size = (get_viewport_rect().size * scale)/2
+onready var size = (get_viewport_rect().size * zoom)
+
+export var shift = Vector2(50,250)
+
 var player_path: NodePath
 
 
@@ -14,8 +17,8 @@ func _physics_process(_delta):
 	var player = get_node_or_null(player_path)
 	
 	if player != null:
-		position.x = (size.x * floor((player.position.x) / size.x)) + ((size.x/2))
-		position.y = 150+ (size.y * floor((player.position.y-150) / size.y)) + ((size.y/2))
+		position.x = shift.x + (size.x * floor((player.position.x - shift.x) / size.x)) + ((size.x/2))
+		position.y = shift.y + (size.y * floor((player.position.y - shift.y) / size.y)) + ((size.y/2))
 		
 		
-		print(position)
+		#print(position)
