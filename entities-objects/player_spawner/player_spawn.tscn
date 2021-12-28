@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities-objects/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities-objects/player_spawner/player_spawn.gd" type="Script" id=2]
+
+[node name="player_spawn" type="Position2D"]
+position = Vector2( 72, -48 )
+script = ExtResource( 2 )
+player_inst = ExtResource( 1 )

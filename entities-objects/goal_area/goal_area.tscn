@@ -55,7 +55,7 @@ shader = SubResource( 1 )
 shader_param/mask_texture = ExtResource( 2 )
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 4.8
+radius = 1.6
 
 [node name="goal_area" type="Area2D"]
 scale = Vector2( 5, 5 )
@@ -79,4 +79,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7.10543e-15 )
 shape = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_goal_area_body_entered"]

@@ -4,10 +4,15 @@ extends Node
 var camera_path: NodePath
 var color : Color
 
+var spawner: Node
+
+var deaths: Dictionary
+
+var level := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	deaths.clear()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("f11"):

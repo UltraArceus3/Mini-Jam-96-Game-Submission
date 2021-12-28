@@ -8,7 +8,11 @@ export var speed := 100.0
 
 var is_dead = false
 
+var can_control = true
+
 var def_scale: Vector2
+
+var landed = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,29 +29,42 @@ func get_control_vectors():
 
 func _process(_delta):
 	
-	if not(is_dead):
+	if not(is_dead) and can_control:
 		velocity.x = get_control_vectors() * speed
 		
 		
 		if velocity.y == 0.0:
 			velocity.y -= int(Input.is_action_just_pressed("UP")) * speed * 3
-	
+			
+			if not(landed):
+				_play("walk")
+				landed = true
+			
+			if Input.is_action_just_pressed("UP"):
+				_play("jump")
+				
+				
+		else:
+			landed = false
+		
 		$Sprite.scale.x = def_scale.x * abs(velocity.x)/velocity.x if abs(velocity.x) > 0 else $Sprite.scale.x
 		#Lazy way to set sprite direction based on velocity :\
 		#x4 because the sprite's default scale is scale = Vector2(4, 4)
 	
 	
-		if Input.is_action_just_pressed("ded"):
-			kill()
+		#if Input.is_action_just_pressed("ded"):
+		#	kill()
 
 	if not(is_on_floor()):
 		velocity.y += 9.8
 	
-	velocity = move_and_slide(velocity)
+	if can_control:
+		velocity = move_and_slide(velocity)
 
 func kill():
 	if is_dead:
 		return
+	_play("death")
 	is_dead = true
 	velocity = Vector2.ZERO
 	$Sprite/ColorRect.visible = false
@@ -94,3 +111,16 @@ func _gen_color():
 	var col = Color(r,g,b)
 	
 	$Sprite.self_modulate = col
+
+
+func _play(aud_name: String):
+	match aud_name:
+		"walk":
+			$AudioStreamPlayer2D.stream = load("res://resources/smol_walk.wav")
+			$AudioStreamPlayer2D.play()
+		"jump":
+			$AudioStreamPlayer2D.stream = load("res://resources/smol_jump.wav")
+			$AudioStreamPlayer2D.play()
+		"death":
+			$AudioStreamPlayer2D.stream = load("res://resources/smol_death.wav")
+			$AudioStreamPlayer2D.play()

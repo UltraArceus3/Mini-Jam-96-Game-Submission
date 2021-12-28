@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smol_death.wav-4733c5754cd0505add45a845f2abdb40.sample"
+
+[deps]
+
+source_file="res://resources/smol_death.wav"
+dest_files=[ "res://.import/smol_death.wav-4733c5754cd0505add45a845f2abdb40.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

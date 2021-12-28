@@ -12,14 +12,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$EndFrame.modulate = Global.color
+#func _process(delta):
+#	pass
 
 
-func _on_goal_area_body_entered(body):
+func _on_Checkpoint_body_entered(body):
 	if body.is_in_group("player"):
-		body.can_control = false
-		body.get_node("AnimationPlayer").play("finish")
-		yield(body.get_node("AnimationPlayer"), "animation_finished")
-		yield(get_tree().create_timer(3),"timeout")
-		get_tree().quit()
+		Global.spawner.position = $Position2D.global_position
