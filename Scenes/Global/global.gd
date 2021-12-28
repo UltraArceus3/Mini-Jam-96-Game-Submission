@@ -13,7 +13,8 @@ var level := 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	deaths.clear()
-
+	deaths[level] = 0
+	
 func _process(_delta):
 	if Input.is_action_just_pressed("f11"):
 		OS.window_fullscreen = !OS.window_fullscreen
@@ -40,3 +41,16 @@ func _gen_color():
 	var col = Color(r,g,b)
 	
 	color = col
+
+
+func next_level():
+	level += 1
+	deaths[level] = 0
+	get_tree().change_scene("res://Scenes/"+str(level)+".tscn")
+	
+	
+func death():
+	if level in deaths.keys():
+		deaths[level] += 1
+	else:
+		deaths[level] = 1

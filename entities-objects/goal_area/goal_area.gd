@@ -21,5 +21,5 @@ func _on_goal_area_body_entered(body):
 		body.can_control = false
 		body.get_node("AnimationPlayer").play("finish")
 		yield(body.get_node("AnimationPlayer"), "animation_finished")
-		yield(get_tree().create_timer(3),"timeout")
-		get_tree().quit()
+		yield(get_tree().create_timer(1),"timeout")
+		Global.next_level()

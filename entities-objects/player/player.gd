@@ -66,6 +66,7 @@ func kill():
 		return
 	_play("death")
 	is_dead = true
+	Global.death()
 	velocity = Vector2.ZERO
 	$Sprite/ColorRect.visible = false
 	$Sprite/ColorRect2.visible = false
