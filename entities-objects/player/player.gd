@@ -85,7 +85,7 @@ func _gen_color():
 	var b: float
 	
 	
-	for i in range(num):
+	for _i in range(num):
 		ind_b = randi() % 3
 		
 		while ind_b == ind:

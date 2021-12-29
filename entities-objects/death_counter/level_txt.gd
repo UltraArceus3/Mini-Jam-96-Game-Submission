@@ -11,9 +11,6 @@ func _ready():
 	visible = true
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	
-	var i = Global.deaths[Global.level] if len(Global.deaths) > Global.level else 0
-	#print(Global.deaths)
-	text = "Deaths: " + str(i)
+	text = "Level " + str(Global.level) if Global.level != 0 else "Tutorial"

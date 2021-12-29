@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="MJ96 Game"
-run/main_scene="res://Scenes/1.tscn"
+run/main_scene="res://Scenes/Menu/Title.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://Scenes/Global/global.gd"
+TransitionScene="*res://Scenes/Transition/transition_scene.tscn"
 
 [display]
 

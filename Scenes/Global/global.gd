@@ -46,7 +46,7 @@ func _gen_color():
 func next_level():
 	level += 1
 	deaths[level] = 0
-	get_tree().change_scene("res://Scenes/"+str(level)+".tscn")
+	TransitionScene.to("res://Scenes/"+str(level)+".tscn")
 	
 	
 func death():

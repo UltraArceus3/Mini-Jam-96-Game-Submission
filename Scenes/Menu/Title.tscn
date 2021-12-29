@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Menu/Title.gd" type="Script" id=1]
+[ext_resource path="res://entities-objects/background_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Menu/button_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://upheavtt.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 4 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 1504.0
+margin_bottom = 880.0
+
+[node name="to_credits" type="Button" parent="."]
+margin_left = 528.0
+margin_top = 432.0
+margin_right = 752.0
+margin_bottom = 488.0
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+
+[node name="to_game" type="Button" parent="."]
+margin_left = 528.0
+margin_top = 328.0
+margin_right = 752.0
+margin_bottom = 384.0
+custom_fonts/font = ExtResource( 3 )
+text = "Start Game"
+
+[node name="Title" type="Label" parent="."]
+margin_left = 344.0
+margin_top = 144.0
+margin_right = 941.0
+margin_bottom = 264.0
+custom_fonts/font = SubResource( 1 )
+text = "DEATHLY PLATFORM"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jam" type="Label" parent="."]
+margin_left = 24.0
+margin_top = 664.0
+margin_right = 336.0
+margin_bottom = 693.0
+custom_fonts/font = SubResource( 2 )
+text = "MINI-JAM 96: FATE"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="to_credits" to="." method="_on_to_credits_pressed"]
+[connection signal="pressed" from="to_game" to="." method="_on_to_game_pressed"]

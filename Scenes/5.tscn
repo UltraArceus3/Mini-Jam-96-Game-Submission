@@ -1,0 +1,179 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://entities-objects/background_menu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities-objects/entry.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Menu/button_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/5.gd" type="Script" id=4]
+[ext_resource path="res://upheavtt.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 9 )
+
+[node name="5" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" parent="." instance=ExtResource( 1 )]
+margin_left = -112.0
+margin_top = -80.0
+margin_right = 1392.0
+margin_bottom = 800.0
+
+[node name="entry" type="Control" parent="."]
+margin_left = 560.0
+margin_top = 112.0
+margin_right = 720.0
+margin_bottom = 200.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="level" type="Label" parent="entry"]
+margin_left = -16.0
+margin_right = 170.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Tutorial"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deaths" type="Label" parent="entry"]
+margin_left = -24.0
+margin_top = 40.0
+margin_right = 174.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Deaths: 10"
+align = 1
+
+[node name="entry2" type="Control" parent="."]
+margin_left = 432.0
+margin_top = 264.0
+margin_right = 592.0
+margin_bottom = 352.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lvl = 1
+
+[node name="level" type="Label" parent="entry2"]
+margin_left = 8.0
+margin_right = 152.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+align = 1
+
+[node name="deaths" type="Label" parent="entry2"]
+margin_left = -16.0
+margin_top = 40.0
+margin_right = 182.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Deaths: 10"
+align = 1
+
+[node name="entry3" type="Control" parent="."]
+margin_left = 688.0
+margin_top = 264.0
+margin_right = 848.0
+margin_bottom = 352.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lvl = 2
+
+[node name="level" type="Label" parent="entry3"]
+margin_left = 8.0
+margin_right = 152.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+align = 1
+
+[node name="deaths" type="Label" parent="entry3"]
+margin_left = -16.0
+margin_top = 40.0
+margin_right = 182.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Deaths: 10"
+align = 1
+
+[node name="entry4" type="Control" parent="."]
+margin_left = 432.0
+margin_top = 424.0
+margin_right = 592.0
+margin_bottom = 512.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lvl = 3
+
+[node name="level" type="Label" parent="entry4"]
+margin_left = 8.0
+margin_right = 152.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+align = 1
+
+[node name="deaths" type="Label" parent="entry4"]
+margin_left = -16.0
+margin_top = 40.0
+margin_right = 182.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Deaths: 10"
+align = 1
+
+[node name="entry5" type="Control" parent="."]
+margin_left = 688.0
+margin_top = 424.0
+margin_right = 848.0
+margin_bottom = 512.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+lvl = 4
+
+[node name="level" type="Label" parent="entry5"]
+margin_left = 8.0
+margin_right = 152.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Level 1"
+align = 1
+
+[node name="deaths" type="Label" parent="entry5"]
+margin_left = -16.0
+margin_top = 40.0
+margin_right = 182.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Deaths: 10"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 544.0
+margin_top = 616.0
+margin_right = 736.0
+margin_bottom = 664.0
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
